@@ -101,14 +101,14 @@ if(cmd === 'profile') {
                         ctx.drawImage(ava, 152, 27, 95, 95);
                         
                                                 //text
-                        ctx.font = '20px "Open Sans"';
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.font = '32px "Open Sans"';
+                        ctx.fillStyle = "#FF00FF";
                         ctx.textAlign = "center";
                         ctx.fillText(`${message.author.username}`, 210, 154);
                         
                         //ur name
                         ctx.font = '20px "Open Sans"';
-                        ctx.fillStyle = "#551a8b";
+                        ctx.fillStyle = "#DA70D6";
                         ctx.textAlign = "center";
                         ctx.fillText("Dragon", 210, 190);
                         
