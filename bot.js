@@ -73,7 +73,7 @@ client.on('message', async message => {
 let prefix = "f!";
 let cmd = message.content.split(" ")[0];
 cmd = cmd.slice(prefix.length);
-const args = message.content.split(" ").slice(1);
+let args = message.content.split(" ").slice(1);
 ///////////////////!! D E V E L O P E R S !!///////////////////////////////
 // Sorry Spyro, this cause erros!
 
@@ -186,7 +186,7 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "store-report") {
-        let args = args.join(" ");
+        args = args.join(" ");
         if (!args[1])
      return message.channel.send(`**${prefix}report <Your  Problem here>**`);
       const embed = new Discord.RichEmbed()
