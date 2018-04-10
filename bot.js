@@ -186,19 +186,13 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "report") {
-       let handlerofargs = message.content.split(" ").join(" ").slice(1);
-        let args = handlerofargs.slice(1);
-        let ign = handlerofargs[1];
-        let trandid = handlerofargs[2];
-        let problem = handlerofargs.slice(3);
-        if (!ign)
+        args = args.join(" ");
+        if (!args[1])
      return message.channel.send(`**${prefix}report [message]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('ign', ign)
-      .addField('trans id', trandid)
-      .addField('probblem', problem)
+      .addField('Report', args)
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
       .setFooter(message.author.username, message.author.avatarURL)
