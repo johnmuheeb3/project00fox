@@ -189,6 +189,7 @@ if (cmd ==="server") {
         args = args.join(" ");
         if (!args[1])
      return message.channel.send(`**${prefix}report <Your  Problem here>**`);
+     message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
       .addField('Report', args)
