@@ -11,62 +11,8 @@ client.once('ready', () => {
 });
 client.on('error', console.error);
 ///////////GUILD/////////////////
-client.on('guildMemberAdd', member => {
-    var Canvas = require('canvas-prebuilt');
-    var jimp = require('jimp');
-    Canvas.registerFont('./assets/OpenSans-ExtraBold.ttf', {family: 'Open Sans'})
-    let memberavatar = member.user.avatarURL
-      let welcomer = member.guild.channels.find('name', "welcome");
-        if (!welcomer) return;     
-       const w = ['./assets/w1.jpg','./assets/w2.jpg','./assets/w3.jpg','./assets/w4.jpg','./assets/w6.jpg'];
-        let Image = Canvas.Image,
-            canvas = new Canvas.createCanvas(401, 202),
-            ctx = canvas.getContext('2d');
-        ctx.patternQuality = 'bilinear';
-        ctx.filter = 'bilinear';
-        ctx.antialias = 'subpixel';
-        ctx.shadowColor = 'black';
-        ctx.shadowColor = 'black';
-        ctx.shadowOffsetY = 2;
-        ctx.shadowBlur = 10;
-        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-            if (err) return console.log(err);
-            let BG = Canvas.Image;
-            let ground = new Image;
-            ground.src = Background;
-            ctx.drawImage(ground, 0, 0, 401, 202);
 
-})
 
-                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
-                jimp.read(url, (err, ava) => {
-                    if (err) return console.log(err);
-                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                        if (err) return console.log(err);
-
-                        //Avatar
-                        let Avatar = Canvas.Image;
-                        let ava = new Avatar;
-                        ava.src = buf;
-                        ctx.drawImage(ava, 152, 27, 95, 95);
-                        
-                                                //text
-                        ctx.font = '20px "Open Sans"';
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.textAlign = "center";
-                        ctx.fillText(`Welcome to ${member.guild.name}`, 210, 154);
-                        
-                        //ur name
-                        ctx.font = '20px "Open Sans"';
-                        ctx.fillStyle = "#ff7f7f";
-                        ctx.textAlign = "center";
-                        ctx.fillText(member.user.username, 210, 190);
-                        
-welcomer.sendFile(canvas.toBuffer())
-welcomer.send(`Welcome To **${member.guild.name}**, ${member}! You are The **${member.guild.memberCount}** user!`);
-})
-})
-      });
 ///////////////////////////////
 
 client.on('message', async message => {
@@ -117,6 +63,59 @@ if(cmd === 'help') {
 );
 }
 
+if(cmd === 'profile') {
+    var Canvas = require('canvas-prebuilt');
+    var jimp = require('jimp');
+    Canvas.registerFont('./assets/OpenSans-ExtraBold.ttf', {family: 'Open Sans'})
+    let memberavatar = member.user.avatarURL
+        if (!welcomer) return;     
+        let Image = Canvas.Image,
+            canvas = new Canvas.createCanvas(401, 202),
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'black';
+        ctx.shadowColor = 'black';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 10;
+        fs.readFile(`./dragon-handler.jpg`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 401, 202);
+
+})
+
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+
+                        //Avatar
+                        let Avatar = Canvas.Image;
+                        let ava = new Avatar;
+                        ava.src = buf;
+                        ctx.drawImage(ava, 152, 27, 95, 95);
+                        
+                                                //text
+                        ctx.font = '20px "Open Sans"';
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.textAlign = "center";
+                        ctx.fillText(`${message.author.username}`, 210, 154);
+                        
+                        //ur name
+                        ctx.font = '20px "Open Sans"';
+                        ctx.fillStyle = "#551a8b";
+                        ctx.textAlign = "center";
+                        ctx.fillText("Dragon", 210, 190);
+                        
+message.channel.sendFile(canvas.toBuffer())
+})
+})
+}
 if (cmd === 'fortnite') {
 const Fortnite = require('fortnite');
 const ft = new Fortnite('1010ab16-8f67-414a-a0b5-13d9e8b93954');
