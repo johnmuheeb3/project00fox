@@ -72,14 +72,14 @@ if(cmd === 'profile') {
             canvas = new Canvas.createCanvas(401, 202),
             ctx = canvas.getContext('2d');
         ctx.patternQuality = 'good';
-        ctx.filter = 'blur(50px)';
+        ctx.filter = 'blur(10px)';
         ctx.antialias = 'subpixel';
         ctx.shadowColor = 'black';
         ctx.shadowColor = 'black';
         ctx.imageSmoothingEnabled = true;
         ctx.shadowOffsetY = 2;
         ctx.shadowBlur = 40;
-        fs.readFile(`./assets/dragon-handler.jpg`, function (err, Background) {
+        fs.readFile(`./assets/dragon-handler.png`, function (err, Background) {
             if (err) return console.log(err);
             let BG = Canvas.Image;
             let ground = new Image;
@@ -104,13 +104,13 @@ if(cmd === 'profile') {
                         ctx.font = '32px "Open Sans"';
                         ctx.fillStyle = "#FF00FF";
                         ctx.textAlign = "center";
-                        ctx.fillText(`${message.author.username}`, 200.5, 101);
+                        ctx.fillText(`${message.author.username}`, 210, 154);
                         
                         //ur name
                         ctx.font = '20px "Open Sans"';
                         ctx.fillStyle = "#DA70D6";
                         ctx.textAlign = "center";
-                        ctx.fillText("Dragon", 200.5, 101);
+                        ctx.fillText("Dragon", 210, 190);
                         
 message.channel.sendFile(canvas.toBuffer())
 })
