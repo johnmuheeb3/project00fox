@@ -63,64 +63,60 @@ if(cmd === 'help') {
 );
 }
 
-if(cmd === 'profile') {
-    var Canvas = require('canvas-prebuilt');
-    var jimp = require('jimp');
-    Canvas.registerFont('./assets/OpenSans-ExtraBold.ttf', {family: 'Open Sans'})
-    let memberavatar = message.author.avatarURL
-        let Image = Canvas.Image,
-            canvas = new Canvas.createCanvas(401, 202),
-            ctx = canvas.getContext('2d');
-        ctx.patternQuality = 'good';
-        ctx.filter = 'blur(10px)';
-        ctx.antialias = 'subpixel';
-        ctx.shadowColor = 'black';
-        ctx.shadowColor = 'black';
-        ctx.imageSmoothingEnabled = true;
-        ctx.shadowOffsetY = 2;
-        ctx.shadowBlur = 40;
-        fs.readFile(`./assets/dragon-handler.png`, function (err, Background) {
-            if (err) return console.log(err);
-            let BG = Canvas.Image;
-            let ground = new Image;
-            ground.src = Background;
-            ctx.drawImage(ground, 0, 0, 401, 202);
+// if(cmd === 'profile') {
+//     var Canvas = require('canvas-prebuilt');
+//     var jimp = require('jimp');
+//     Canvas.registerFont('./assets/OpenSans-ExtraBold.ttf', {family: 'Open Sans'})
+//     let memberavatar = message.author.avatarURL
+//         let Image = Canvas.Image,
+//             canvas = new Canvas.createCanvas(401, 202),
+//             ctx = canvas.getContext('2d');
+//         ctx.patternQuality = 'good';
+//         ctx.filter = 'blur(10px)';
+//         ctx.antialias = 'default';
+//         ctx.shadowColor = 'black';
+//         ctx.shadowColor = 'black';
+//         ctx.shadowOffsetY = 15;
+//         ctx.shadowBlur = 40;
+//         fs.readFile(`./assets/dragon-handler.png`, function (err, Background) {
+//             if (err) return console.log(err);
+//             let BG = Canvas.Image;
+//             let ground = new Image;
+//             ground.src = Background;
+//             ctx.drawImage(ground, 0, 0, 401, 202);
 
-})
+// })
 
-                let url = message.author.displayAvatarURL.endsWith(".webp") ? message.author.displayAvatarURL.slice(5, -20) + ".png" : message.author.displayAvatarURL;
-                jimp.read(url, (err, ava) => {
-                    if (err) return console.log(err);
-                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                        if (err) return console.log(err);
+//                 let url = message.author.displayAvatarURL.endsWith(".webp") ? message.author.displayAvatarURL.slice(5, -20) + ".png" : message.author.displayAvatarURL;
+//                 jimp.read(url, (err, ava) => {
+//                     if (err) return console.log(err);
+//                     ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+//                         if (err) return console.log(err);
 
-                        //handelr 
-                        let Handler = Canvas.Image;
-                        let hand = new Hand;
-                        hand.src = "./assets/hand-handler-dragon.png"
-                        ctx.drawImage(hand, 152, 27, 95, 95);
-                        //Avatar
-                        let Avatar = Canvas.Image;
-                        let ava = new Avatar;
-                        ava.src = buf;
-                        ctx.drawImage(ava, 152, 27, 95, 95);
                         
-                                                //text
-                        ctx.font = '32px "Open Sans"';
-                        ctx.fillStyle = "#FF00FF";
-                        ctx.textAlign = "center";
-                        ctx.fillText(`${message.author.username}`, 210, 154);
+//                         //Avatar
+//                         let Avatar = Canvas.Image;
+//                         let ava = new Avatar;
+//                         ava.src = buf;
+//                         ctx.drawImage(ava, 152, 27, 95, 95);
                         
-                        //ur name
-                        ctx.font = '20px "Open Sans"';
-                        ctx.fillStyle = "#DA70D6";
-                        ctx.textAlign = "center";
-                        ctx.fillText("Dragon", 210, 190);
+//                                                 //text
+//                         ctx.font = '32px "Open Sans"';
+//                         ctx.fillStyle = "#FF00FF";
+//                         ctx.textAlign = "center";
+//                         ctx.fillText(`${message.author.username}`, 210, 154);
                         
-message.channel.sendFile(canvas.toBuffer())
-})
-})
-}
+//                         //ur name
+//                         ctx.font = '20px "Open Sans"';
+//                         ctx.fillStyle = "#DA70D6";
+//                         ctx.textAlign = "center";
+//                         ctx.fillText("Dragon", 210, 190);
+                        
+// message.channel.sendFile(canvas.toBuffer())
+// })
+// })
+// }
+
 if (cmd === 'fortnite') {
 const Fortnite = require('fortnite');
 const ft = new Fortnite('1010ab16-8f67-414a-a0b5-13d9e8b93954');
@@ -191,12 +187,16 @@ if (cmd ==="server") {
 
     if(cmd === "store-report") {
         args = args.join(" ");
+        let trandid = args[2];
+        let problem = args[3];
         if (!args[1])
-     return message.channel.send(`**${prefix}report <Your  Problem here>**`);
+     return message.channel.send(`**${prefix}report [IGN] [Your transaction ID] [Your problem]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('Report', args)
+      .addField('In Game Name', args)
+      .addField('transaction ID', trandid)
+      .addField('Probelm', problem)
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
       .setFooter(message.author.username, message.author.avatarURL)
