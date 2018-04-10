@@ -186,8 +186,8 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "store-report") {
-        let handlerargs =  message.content.split(" ");
-        let args = handlerargs.slice(1, 2);
+        let handlerargs = message.content.split(" ");
+        let ign = args[1];
         let transid = args[2];
         let Problem = handlerargs.slice(3);
         if (!args)
