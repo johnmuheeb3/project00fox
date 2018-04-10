@@ -72,12 +72,13 @@ if(cmd === 'profile') {
             canvas = new Canvas.createCanvas(401, 202),
             ctx = canvas.getContext('2d');
         ctx.patternQuality = 'bilinear';
-        ctx.filter = 'bilinear';
+        ctx.filter = 'blur(2px)';
         ctx.antialias = 'subpixel';
         ctx.shadowColor = 'black';
         ctx.shadowColor = 'black';
+        ctx.imageSmoothingEnabled = true;
         ctx.shadowOffsetY = 2;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 40;
         fs.readFile(`./assets/dragon-handler.jpg`, function (err, Background) {
             if (err) return console.log(err);
             let BG = Canvas.Image;
