@@ -190,7 +190,7 @@ if (cmd ==="server") {
         let ign = args[1];
         let transid = args[2];
         let Problem = handlerargs.slice(3);
-        if (!args)
+        if (!ign)
      return message.channel.send(`**${prefix}report [IGN] [Your transaction ID] [Your problem]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
