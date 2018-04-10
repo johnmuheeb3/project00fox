@@ -94,6 +94,11 @@ if(cmd === 'profile') {
                     ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
                         if (err) return console.log(err);
 
+                        //handelr 
+                        let Handler = Canvas.Image;
+                        let hand = new Hand;
+                        hand.src = "./assets/hand-handler-dragon.png"
+                        ctx.drawImage(hand, 152, 27, 95, 95);
                         //Avatar
                         let Avatar = Canvas.Image;
                         let ava = new Avatar;
