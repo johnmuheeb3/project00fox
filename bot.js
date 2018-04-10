@@ -7,7 +7,7 @@ client.once('ready', () => {
     console.log("---------------------");
     console.log("[Abayro] READY");
     console.log("---------------------");
-    client.user.setActivity('a!help|In Developing', {type: "PLAYING"})
+    client.user.setActivity('N/A yet, f!', {type: "PLAYING"})
 });
 client.on('error', console.error);
 ///////////GUILD/////////////////
@@ -70,12 +70,7 @@ welcomer.send(`Welcome To **${member.guild.name}**, ${member}! You are The **${m
 ///////////////////////////////
 
 client.on('message', async message => {
-let prefix;
-if(!message.guild.id == '411272231507984385') {
-    prefix = "a!"
-} else {
-    prefix = "a$"
-}
+let prefix = "f!";
 let cmd = message.content.split(" ")[0];
 cmd = cmd.slice(prefix.length);
 const args = message.content.split(" ").slice(1);
@@ -188,6 +183,24 @@ if (cmd ==="server") {
     .addField("👥Members Count",`**${message.guild.memberCount}**`)
     .setThumbnail(message.guild.iconURL)
     .setColor('RANDOM')
+    )}
+
+    if(cmd === "store-report") {
+        let args = args.join(" ");
+        if (!args[1])
+     return message.channel.send(`**${prefix}report <Your  Problem here>**`);
+      const embed = new Discord.RichEmbed()
+      .addField('**Sender**', message.author.tag)
+      .addField('Report', args)
+      .setColor('RANDOM')
+      .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
+      .setFooter(message.author.username, message.author.avatarURL)
+     .setTimestamp()
+      client.channels.get('433258716759064577').send(embed);
+      const embed21 = new Discord.RichEmbed()
+      message.channel.send('**Thanks for reporting a problem, we will try as hard as we can to help you**').then((message)=> { 
+        message.delete(1000, args)
+      }
     )}
     //////////
 });
