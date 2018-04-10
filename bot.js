@@ -186,6 +186,7 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "store-report") {
+        let args = message.content.split(" ");
         let ign = args[1];
         let trandid = args[2];
         let problem = args.slice[3];
