@@ -78,7 +78,7 @@ if(cmd === 'profile') {
         ctx.shadowColor = 'black';
         ctx.shadowOffsetY = 2;
         ctx.shadowBlur = 10;
-        fs.readFile(`/dragon-handler.jpg`, function (err, Background) {
+        fs.readFile(`./assets/dragon-handler.jpg`, function (err, Background) {
             if (err) return console.log(err);
             let BG = Canvas.Image;
             let ground = new Image;
