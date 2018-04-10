@@ -185,19 +185,20 @@ if (cmd ==="server") {
     .setColor('RANDOM')
     )}
 
-    if(cmd === "store-report") {
-        let handlerargs = message.content.split(" ");
-        let ign = args[1];
-        let transid = args[2];
-        let Problem = handlerargs.slice(3);
+    if(cmd === "report") {
+       let handlerofargs = message.content.split(" ").join(" ");
+        let args = handlerofargs.slice(1);
+        let ign = handlerofargs[1];
+        let trandid = handlerofargs[2];
+        let problem = handlerofargs.slice(3);
         if (!ign)
-     return message.channel.send(`**${prefix}report [IGN] [Your transaction ID] [Your problem]**`);
+     return message.channel.send(`**${prefix}report [message]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('IGN', args)
-      .addField("Transaction ID", transid)
-      .addField("Problem", Problem)
+      .addField('ign', ign)
+      .addField('trans id', trandid)
+      .addField('probblem', problem)
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
       .setFooter(message.author.username, message.author.avatarURL)
@@ -205,7 +206,7 @@ if (cmd ==="server") {
       client.channels.get('433258716759064577').send(embed);
       const embed21 = new Discord.RichEmbed()
       message.channel.send('**Thanks for reporting a problem, we will try as hard as we can to help you**').then((message)=> { 
-        message.delete(1000)
+        message.delete(1000, args)
       }
     )}
 
