@@ -104,13 +104,13 @@ if(cmd === 'profile') {
                         ctx.font = '32px "Open Sans"';
                         ctx.fillStyle = "#FF00FF";
                         ctx.textAlign = "center";
-                        ctx.fillText(`${message.author.username}`, 210, 95);
+                        ctx.fillText(`${message.author.username}`, 210, 154);
                         
                         //ur name
                         ctx.font = '20px "Open Sans"';
                         ctx.fillStyle = "#DA70D6";
                         ctx.textAlign = "center";
-                        ctx.fillText("Dragon", 210, 95);
+                        ctx.fillText("Dragon", 210, 190);
                         
 message.channel.sendFile(canvas.toBuffer())
 })
