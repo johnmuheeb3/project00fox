@@ -186,7 +186,7 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "report") {
-       let handlerofargs = message.content.split(" ").join(" ");
+       let handlerofargs = message.content.split(" ").join(" ").slice(1);
         let args = handlerofargs.slice(1);
         let ign = handlerofargs[1];
         let trandid = handlerofargs[2];
