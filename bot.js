@@ -186,15 +186,15 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "store-report") {
-        args = args.join(" ");
+        let ign = args[1];
         let trandid = args[2];
-        let problem = args[3];
-        if (!args[1])
+        let problem = args.slice[3];
+        if (!ign[1])
      return message.channel.send(`**${prefix}report [IGN] [Your transaction ID] [Your problem]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('In Game Name', args)
+      .addField('In Game Name', ign)
       .addField('transaction ID', trandid)
       .addField('Probelm', problem)
       .setColor('RANDOM')
