@@ -67,7 +67,7 @@ if(cmd === 'profile') {
     var Canvas = require('canvas-prebuilt');
     var jimp = require('jimp');
     Canvas.registerFont('./assets/OpenSans-ExtraBold.ttf', {family: 'Open Sans'})
-    let memberavatar = member.user.avatarURL
+    let memberavatar = message.author.avatarURL
         if (!welcomer) return;     
         let Image = Canvas.Image,
             canvas = new Canvas.createCanvas(401, 202),
@@ -88,7 +88,7 @@ if(cmd === 'profile') {
 
 })
 
-                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                let url = message.author.displayAvatarURL.endsWith(".webp") ? message.author.displayAvatarURL.slice(5, -20) + ".png" : message.author.displayAvatarURL;
                 jimp.read(url, (err, ava) => {
                     if (err) return console.log(err);
                     ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
