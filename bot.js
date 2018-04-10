@@ -5,7 +5,7 @@ const devs = ["171259176029257728","343383616895713290"];
 client.login(process.env.SECERT_KEY);
 client.once('ready', () => {
     console.log("---------------------");
-    console.log("[Abayro] READY");
+    console.log("[FoxMC] READY");
     console.log("---------------------");
     client.user.setActivity('N/A yet, f!', {type: "PLAYING"})
 });
