@@ -1,0 +1,25 @@
+{
+  "name": "abayro",
+  "version": "0.0.1",
+  "description": "Alpha",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abaaaayro-Alpha/itsabadyandspyro.git"
+  },
+  "author": "Abady",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Abaaaayro-Alpha/itsabadyandspyro/issues"
+  },
+  "homepage": "https://github.com/Abaaaayro-Alpha/itsabadyandspyro#readme",
+  "dependencies": {
+    "canvas-prebuilt": "^2.0.0-alpha.12",
+    "discord.js": "^11.3.2",
+    "fortnite": "^3.0.0",
+    "jimp": "^0.2.28"
+  }
+}
