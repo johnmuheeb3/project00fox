@@ -187,15 +187,17 @@ if (cmd ==="server") {
 
     if(cmd === "store-report") {
         let handlerargs =  message.content.split(" ");
-        let args = handlerargs.slice(1);
+        let args = handlerargs.slice(1, 2);
         let transid = args[2];
         let Problem = handlerargs.slice(3);
-        if (!transid)
+        if (!args)
      return message.channel.send(`**${prefix}report [IGN] [Your transaction ID] [Your problem]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('Report', args)
+      .addField('IGN', args)
+      .addField("Transaction ID", transid)
+      .addField("Problem", Problem)
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
       .setFooter(message.author.username, message.author.avatarURL)
