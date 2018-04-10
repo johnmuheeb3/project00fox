@@ -5,7 +5,7 @@ const devs = ["171259176029257728","343383616895713290"];
 client.login(process.env.SECERT_KEY);
 client.once('ready', () => {
     console.log("---------------------");
-    console.log("[FoxMC] READY");
+    console.log("[Abayro] READY");
     console.log("---------------------");
     client.user.setActivity('N/A yet, f!', {type: "PLAYING"})
 });
@@ -186,18 +186,16 @@ if (cmd ==="server") {
     )}
 
     if(cmd === "store-report") {
-        let args = message.content.split(" ");
-        let ign = args[1];
-        let trandid = args[2];
-        let problem = args.slice[3];
-        if (!ign[1])
+        let handlerargs =  message.content.split(" ");
+        let args = handlerargs.slice(1);
+        let transid = args[2];
+        let Problem = handlerargs.slice(3);
+        if (!args)
      return message.channel.send(`**${prefix}report [IGN] [Your transaction ID] [Your problem]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('In Game Name', ign)
-      .addField('transaction ID', trandid)
-      .addField('Probelm', problem)
+      .addField('Report', args)
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
       .setFooter(message.author.username, message.author.avatarURL)
@@ -205,7 +203,7 @@ if (cmd ==="server") {
       client.channels.get('433258716759064577').send(embed);
       const embed21 = new Discord.RichEmbed()
       message.channel.send('**Thanks for reporting a problem, we will try as hard as we can to help you**').then((message)=> { 
-        message.delete(1000, args)
+        message.delete(1000)
       }
     )}
 
