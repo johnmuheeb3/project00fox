@@ -203,26 +203,6 @@ if (cmd ==="server") {
       }
     )}
 
-    if (cmd === 'kick') return;
-     if(!message.channel.guild) return message.reply('** This command only for servers**');
-    if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
-    if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
-    var user = message.mentions.users.first();
-    var reason = message.content.split(" ").slice(2).join(" ");
-    if (message.mentions.users.size < 1) return message.reply("**mention the guy**");
-    if(!reason) return message.reply ("**put a reason**");
-    if (!message.guild.member(user).kickable) return message.reply("**I can't kick member higher than me**");
-    const kickembed = new Discord.RichEmbed()
-    .setAuthor(`KICKED!`, user.displayAvatarURL)
-    .setColor("RANDOM")
-    .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-    .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-    .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-    .setFooter(message.author.username)
-    .setTimestamp()
-    client.channels.get('433281615276539905').send(kickembed);
-    user.send(reason,+ '**you have been kicked from**','**[ ' + `${message.guild.name}` + ' ]**').then(()=>{
-  message.guild.member(user).kick();
-    })
-    //////////
+
+    ////////////////
 });
