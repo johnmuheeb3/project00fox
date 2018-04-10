@@ -68,7 +68,6 @@ if(cmd === 'profile') {
     var jimp = require('jimp');
     Canvas.registerFont('./assets/OpenSans-ExtraBold.ttf', {family: 'Open Sans'})
     let memberavatar = message.author.avatarURL
-        if (!welcomer) return;     
         let Image = Canvas.Image,
             canvas = new Canvas.createCanvas(401, 202),
             ctx = canvas.getContext('2d');
