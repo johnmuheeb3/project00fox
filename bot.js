@@ -192,8 +192,8 @@ if (cmd ==="server") {
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('Reported Name', args[1])
-      .addField('Evidence', args[2])
+      .addField('Reported Name', args.slice(1,2))
+      .addField('Evidence', args.slice(2,3))
       .addField('Report Message', args.slice(3))
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
