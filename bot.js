@@ -185,25 +185,31 @@ if (cmd ==="server") {
     .setColor('RANDOM')
     )}
 
-    if(cmd === "sr") {
-        args = args.join(" ");
-        if (!args[1])
-     return message.channel.send(`**${prefix}sr [Hacker-Reported Name / Evidenece / Message (Optional)]**`);
-     message.delete();
-      const embed = new Discord.RichEmbed()
-      .addField('**Sender**', message.author.tag)
-      .addField('Reported Name', args.slice(1,2))
-      .addField('Evidence', args.slice(2,3))
-      .addField('Report Message', args.slice(3))
-      .setColor('RANDOM')
-      .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
-      .setFooter(message.author.username, message.author.avatarURL)
-     .setTimestamp()
-      client.channels.get('433258716759064577').send(embed);
-      message.channel.send('**Thanks for reporting a problem, we will try as hard as we can to help you**').then((message)=> { 
-        message.delete(1000, args)
-      }
-    )}
+    if (cmd === 'report')
+    {
+        if (r[message.guild.id].rof === 'Off') return;
+        var members = []
+        if (members.includes(message.author.id)) return message.reply(`Please wait for reporting another user.`)
+        let mentions = message.mentions.members.first() || message.content.split(" ").slice(1).join(" ");
+        let reason = message.content.split(" ").slice(2).join(" ")
+        let rC = message.guild.channels.find(`name`, r[message.guild.id].rc)
+        if (!rC) return message.reply(`:x: | Can't find the reports channel`)
+        if (!mentions) return message.reply(`Please mention/type a user to report.`)
+        if (mentions.user.bot) return message.reply(`Bots can't be reported.`)
+        if (message.author.id === mentions.id) return message.reply(`You can't report yourself.`)
+        if (!reason) return message.reply(`Please type a reason for a report.`)
+        var embed = new Embed()
+            .setTitle(`Report`)
+            .setDescription(`<@!${message.author.id}> has reported <@!${mentions.id}>`)
+            .addField(`Reason : `, reason)
+            .setColor(`RED`)
+        rC.send(
+        {
+            embed
+        })
+        members.push(message.author.id);
+        message.channel.send(`${mentions.user.username} has been reported.`)
+    }
 
     if (message.content.startsWith(prefix+ "mute")) {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** you don't have manage roles permission **").catch(console.error);
