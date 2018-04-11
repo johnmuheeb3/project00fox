@@ -195,7 +195,7 @@ if (cmd ==="server") {
         if (mentions.user.bot) return message.reply(`Bots can't be reported.`)
         if (message.author.id === mentions.id) return message.reply(`You can't report yourself.`)
         if (!reason) return message.reply(`Please type a reason for a report.`)
-        var embed = new Embed()
+        var embed = new Discord.RichEmbed()
             .setTitle(`Report`)
             .setDescription(`<@!${message.author.id}> has reported <@!${mentions.id}>`)
             .addField(`Reason : `, reason)
