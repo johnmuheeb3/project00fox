@@ -185,25 +185,52 @@ if (cmd ==="server") {
     .setColor('RANDOM')
     )}
 
-    if(cmd === "report") {
+    if(cmd === "sr") {
         args = args.join(" ");
         if (!args[1])
-     return message.channel.send(`**${prefix}report [message]**`);
+     return message.channel.send(`**${prefix}sr [Hacker-Reported Name / Evidenece / Message (Optional)]**`);
      message.delete();
       const embed = new Discord.RichEmbed()
       .addField('**Sender**', message.author.tag)
-      .addField('Report', args)
+      .addField('Reported Name', args[1])
+      .addField('Evidence', args[2])
+      .addField('Report Message', args.slice(3))
       .setColor('RANDOM')
       .setThumbnail("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678136-shield-warning-256.png")
       .setFooter(message.author.username, message.author.avatarURL)
      .setTimestamp()
       client.channels.get('433258716759064577').send(embed);
-      const embed21 = new Discord.RichEmbed()
       message.channel.send('**Thanks for reporting a problem, we will try as hard as we can to help you**').then((message)=> { 
         message.delete(1000, args)
       }
     )}
 
+    if (message.content.startsWith(prefix+ "mute")) {
+        if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** you don't have manage roles permission **").catch(console.error);
+  let user = message.mentions.users.first();
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+  if (!muteRole) return message.reply("** there's no muted role please create one **").catch(console.error);
+  if (message.mentions.users.size < 1) return message.reply('** Please mention a member**').catch(console.error);
+  message.guild.member(user).addRole(muteRole).then(() => {
+    return message.reply("**:white_check_mark: .. Muted**").catch(console.error);
+    });
+  
+  const muteembed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTimestamp()
+    .addField('Muted', '**[ ' + `${user.username}#${user.discriminator} (${user.id})` + ' ]**')
+    .addField('By', '**[ ' + `${message.author.username}#${message.author.discriminator}` + ' ]**')
+    client.channels.get('433281615276539905').send(muteembed);
+   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply("**this member is a 'Moderator' **").catch(console.error);
+ 
+  if (message.guild.member(user).roles.has(muteRole.id)) {
+return message.reply("**Already Muted**").catch(console.error);
+} else {
+  message.guild.member(user).addRole(muteRole).then(() => {
+    return message.reply("**:white_check_mark: .. Muted**").catch(console.error);
+    });
+}
+  }
 
     ////////////////
 });
