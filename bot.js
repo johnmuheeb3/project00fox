@@ -187,13 +187,10 @@ if (cmd ==="server") {
 
     if (cmd === 'report')
     {
-        if (r[message.guild.id].rof === 'Off') return;
         var members = []
         if (members.includes(message.author.id)) return message.reply(`Please wait for reporting another user.`)
         let mentions = message.mentions.members.first() || message.content.split(" ").slice(1).join(" ");
         let reason = message.content.split(" ").slice(2).join(" ")
-        let rC = message.guild.channels.find(`name`, r[message.guild.id].rc)
-        if (!rC) return message.reply(`:x: | Can't find the reports channel`)
         if (!mentions) return message.reply(`Please mention/type a user to report.`)
         if (mentions.user.bot) return message.reply(`Bots can't be reported.`)
         if (message.author.id === mentions.id) return message.reply(`You can't report yourself.`)
@@ -203,7 +200,7 @@ if (cmd ==="server") {
             .setDescription(`<@!${message.author.id}> has reported <@!${mentions.id}>`)
             .addField(`Reason : `, reason)
             .setColor(`RED`)
-        rC.send(
+        client.channels.get("433258716759064577").send(
         {
             embed
         })
