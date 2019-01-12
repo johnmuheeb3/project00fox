@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({disableEveryone: true});
 const fs = require('fs'); 
-const devs = ["171259176029257728","343383616895713290"];
-client.login(process.env.SECERT_KEY);
+const devs = ["349095859859881984","392950841935527936"];
+client.login(process.env.BlueGamer);
 client.once('ready', () => {
     console.log("---------------------");
     console.log("[Abayro] READY");
